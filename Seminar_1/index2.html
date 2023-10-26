@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <p class="goodsCount">Товаров в корзине {{counter}}</p>
+      <button @click="increaseCount">{{buttonText}}</button>
+      <button @click="checkAgeYes">I am 14 years old</button>
+      <button @click="checkAgeNo">I am not 14 years old yet</button>
+      <p>{{messageCheckAge}}</p>
+      <button @click="moreInform = !moreInform">Show more</button>
+      <p v-show="moreInform">
+        Задание 5 (тайминг 15 минут) 1. Создайте кнопку "Генерировать случайное
+        число". При клике на кнопку должно отображаться случайное число в
+        заданном диапазоне (например, от 1 до 10). 2. При клике на кнопку, если
+        полученное значение меньше 5, необходимо вывести на страницу, “Число
+        меньше 5” 3. Если число от 5 до 9, необходимо вывести “Число от 5 до 9”
+        4. Если число равно 10, необходимо вывести “Число ранов 10”?
+      </p> -->
+
+      <button @click="randomNum(1,11)">Генерировать случайное число</button>
+      <p>{{number}}</p>
+      <p>{{computerBest}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: ".app",
+        data: {
+          counter: 0,
+          buttonText: "Купить",
+          messageCheckAge: "",
+          moreInform: true,
+          number: "Number",
+          numberMessage: "Что это за число",
+        },
+        methods: {
+          increaseCount() {
+            if (this.counter < 1) {
+              this.counter++;
+              this.buttonText = "Товар в корзине";
+            } else {
+              return;
+            }
+          },
+          checkAgeYes() {
+            this.messageCheckAge = "You can buy goods.";
+          },
+          checkAgeNo() {
+            this.messageCheckAge = "You can't buy anything here!.";
+          },
+          randomNum(min, max) {
+            this.number = Math.floor(Math.random() * (max - min) + min);
+          },
+        },
+        computed: {
+          computerBest() {
+            if (this.number < 5) {
+              return "Number LESS than 5";
+            } else if (this.number < 10) {
+              return "Number MORE than 5";
+            } else {
+              return "Number equals 10";
+            }
+          },
+        },
+      });
+    </script>
+
+    <!-- <div id="app">
+      <p>Товаров в корзине {{countProduct}}</p>
+      <div v-for="product in cart" :key="product.id" class="cartBox">
+        <p>Name: {{product.name}}</p>
+        <button @click="addProduct(product)">{{product.buttonText}}</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          hello: "Hello",
+          countProduct: 0,
+          cart: [
+            { id: 1, name: "Sweet", inCart: false, buttonText: "Buy" },
+            { id: 2, name: "Makaroshki", inCart: false, buttonText: "Buy" },
+            { id: 3, name: "Milk", inCart: false, buttonText: "Buy" },
+            { id: 4, name: "Bread", inCart: false, buttonText: "Buy" },
+          ],
+        },
+        methods: {
+          addProduct(product) {
+            if (!product.inCart) {
+              this.countProduct++;
+              product.inCart = !product.inCart;
+              product.buttonText = "Товар уже в корзине";
+            }
+          },
+        },
+      });
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <h1 class="title">{{message}}</h1>
+      <h2 v-on:mousemove="mouseDrive($event)">
+        mouse-move {{x}} - {{y}}
+        <span v-on:mousemove.stop>STOP MOUSE EVENT</span>
+      </h2>
+      <button class="button1">CliCk</button>
+      <button @click="increase(5, $event)">Increase {{counter}}</button>
+
+      <p v-html="bigText"></p>
+      <h3 v-if="productAddInCart">Добавить товар в корзину</h3>
+      <h3 v-else="!productAddInCart">Все добавлено уже</h3>
+      <h3 v-show="productAddInCart">SHOW</h3>
+      <button @click="productAddInCart = !productAddInCart">Add Product</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: ".app",
+        data: {
+          productAddInCart: true,
+          message: "Hello Vue!",
+          counter: 0,
+          x: 0,
+          y: 0,
+          bigText: '<p><span>Привет <a href="#"> INFO</a></span></p>',
+        },
+
+        methods: {
+          changeText() {
+            this.message = "textClick done!";
+          },
+          increase(step, event) {
+            this.counter = (this.counter + 1) * step;
+          },
+          mouseDrive(event) {
+            (this.x = event.clientX), (this.y = event.clientY);
+          },
+        },
+      });
+    </script>
+
+    
