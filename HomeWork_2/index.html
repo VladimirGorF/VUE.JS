@@ -18,8 +18,9 @@
         </div>
       </div>
       <div class="sortBox">
+        <button class="sortButton" @click="sortUp">
+          Сортировать по {{sortKind}}
         </button>
-        <button class="sortButton" @click="sortUp">Сортировать по {{sortKind}}</button>
       </div>
     </div>
 
@@ -30,7 +31,7 @@
         el: "#app",
         data: {
           isSort: true,
-          sortKind: 'убыванию',
+          sortKind: "убыванию",
           products: [
             {
               id: 0,
@@ -72,18 +73,18 @@
         methods: {
           sortUp() {
             if (this.isSort) {
-                this.sortKind = 'возрастанию';
-                this.isSort = !this.isSort;
-                this.products.sort(function (a, b) {
-                  return a.price - b.price;
+              this.sortKind = "возрастанию";
+              this.isSort = !this.isSort;
+              this.products.sort(function (a, b) {
+                return a.price - b.price;
               });
             } else {
-                this.sortKind = 'убыванию';
-                this.isSort = !this.isSort;
-                this.products.sort(function (a, b) {
-                  return b.price - a.price;
+              this.sortKind = "убыванию";
+              this.isSort = !this.isSort;
+              this.products.sort(function (a, b) {
+                return b.price - a.price;
               });
-            } 
+            }
           },
         },
       });
