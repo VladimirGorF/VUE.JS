@@ -17,14 +17,12 @@
           ID:{{item.id}}: {{item.name}}. Price: {{item.price}}
         </div>
       </div>
-      <div class="add">
-        <button class="but" @click="fillProducts">Добавить товары</button>
-      </div>
       <div class="sortBox">
         </button>
         <button class="sortButton" @click="sortUp">Сортировать по {{sortKind}}</button>
       </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <script>
@@ -37,21 +35,41 @@
             {
               id: 0,
               name: "Bread",
-              price: 25,
+              price: 8,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 9,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 2,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 7,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 13,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 12,
+            },
+            {
+              id: 0,
+              name: "Bread",
+              price: 11,
             },
           ],
         },
         methods: {
-          fillProducts() {
-            let b = this.products.length + 1;
-            for (let i = this.products.length; i < b; i++) {
-              this.products.push({
-                id: i,
-                name: "Bread",
-                price: Math.floor(Math.random() * 100),
-              });
-            }
-          },
           sortUp() {
             if (this.isSort) {
                 this.sortKind = 'возрастанию';
@@ -63,7 +81,7 @@
                 this.sortKind = 'убыванию';
                 this.isSort = !this.isSort;
                 this.products.sort(function (a, b) {
-                  return a.price - b.price;
+                  return b.price - a.price;
               });
             } 
           },
