@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seminar2</title>
+  </head>
+  <body>
+    <!-- Вы разрабатываете страницу для отображения информации о товаре. У вас есть объект product, который содержит информацию о товаре, включая название, цену и URL изображения товара -->
+    <!-- Добавьте кнопку, которая будет изменять цену товара. При нажатии на кнопку должна генерироваться скидка на товар от 1 до 20% и обновиться цена товара в соответствии с значением скидки -->
+    <!-- Вы разрабатываете простое приложение для отображения списка пользователей. У вас есть массив объектов users, где каждый объект представляет одного пользователя с его именем и возрастом. Вам необходимо отобразить каждого пользователя из массива в виде списка на странице. -->
+
+    <!-- Вы разрабатываете приложение для управления списком контактов. У вас есть форма с полями "Имя", "Фамилия" и "Email", где пользователь может вводить информацию о новом контакте. После добавления контакта он должен отображаться в списке контактов. Требуется связать форму с данными и отображать список контактов на странице. -->
+
+    <div class="app">
+      <!-- <div class="product">{{product.name}}:{{product.price}}</div>
+      <button @click="getDiscount">Get discount</button>
+      <p>Стоимость со скидкой {{priceWithDiscount}}</p> -->
+
+      <div class="products">
+        <!-- <div class="product" v-for="item in products" :key="item.id">
+          <input min="1" type="number" v-model.number="item.quantity">
+          <input type="checkbox" name="" id="" v-model="item.bought">
+          <span class="name">{{item.name}}</span>
+          {{item.bought}} - {{item.quantity}}
+        </div> -->
+
+        <div class="form">
+          <input type="text" v-model="contact.name" />
+          <input type="text" v-model="contact.secondName" />
+          <input type="text" v-model="contact.eMail" />
+          <button @click="addContact" :class="button">addContact</button>
+        </div>
+
+        <div class="contacts">
+          <div class="contact" v-for="item in contacts " :id="item.id">
+            ID:{{item.id}} {{item.name}} {{item.secondName}} : {{item.eMail}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+  
+      new Vue({
+        el: ".app",
+        data: {
+          discount: 0,
+          button: "button",
+
+          contact: {
+            name: "",
+            seconName: "",
+            eMail: "",
+          },
+
+          // product: {
+          //   name: "Хлеб",
+          //   price: 80,
+          // },
+          // products: [
+          //   {
+          //     name: "milk",
+          //     quantity: 10,
+          //     bought: false,
+          //   },
+          //   {
+          //     name: "bread",
+          //     quantity: 8,
+          //     bought: false,
+          //   },
+          //   {
+          //     name: "solt",
+          //     quantity: 26,
+          //     bought: false,
+          //   },
+          // ],
+          contacts: [
+            {
+              id: 0,
+              name: "Viktor",
+              secondName: "Ivanov",
+              eMail: "ivanov@mail.ru",
+            },
+            {
+              id: 1,
+              name: "Petr",
+              secondName: "Voronov",
+              eMail: "vor@mail.ru",
+            },
+            {
+              id: 2,
+              name: "Sveta",
+              secondName: "Gorbunova",
+              eMail: "svetka@mail.ru",
+            },
+          ],
+        },
+
+        methods: {
+          // getDiscount() {
+          //   this.discount = Math.floor(Math.random() * 20);
+          // },
+          addContact() {
+            if (
+              this.contact.name &&
+              this.contact.secondName &&
+              this.contact.eMail
+            ) {
+              // this.contacts.push({
+              //   id: this.contacts.length,
+              //   ...this.contact,
+              // });
+
+              // this.contacts.push(this.contact); // не работает
+
+              // this.contacts.push(JSON.parse(JSON.stringify(this.contact)));
+
+              this.contacts.push(structuredClone(this.contact));
+
+              this.contact.name = "";
+              this.contact.secondName = "";
+              this.contact.eMail = "";
+            }
+          },
+        },
+        computed: {
+          // priceWithDiscount() {
+          //   return (
+          //     this.product.price - (this.product.price * this.discount) / 100
+          //   );
+          // },
+        },
+      });
+    </script>
+  </body>
+</html>
