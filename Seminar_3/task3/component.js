@@ -1,3 +1,5 @@
+// Создайте компонент списка, который отображает массив элементов. Добавьте текстовое поле для фильтрации списка. При вводе текста в поле, список должен автоматически обновляться, отображая только элементы, содержащие введенный текст.
+
 Vue.component("my-component", {
   data() {
     return {
@@ -29,12 +31,14 @@ Vue.component("my-component", {
           this.showProducts.push(product);
         }
       });
+      
     },
   },
 
   template: `
   <div>
-  <input
+
+    <input
     v-model="filterExample"
     placeholder="фильтр"
     v-on:input="filter"
@@ -48,4 +52,3 @@ Vue.component("my-component", {
 </div>
   `,
 });
-
