@@ -15,7 +15,7 @@
         <h2>{{ product.name }}</h2>
         <h3 v-if="product.available">Available</h3>
         <h3 v-else>Out of stock</h3>
-        <h3>{{ formattedPrice }}:{{product.price }}</h3>
+        <h3>{{ formattedPrice(product) }}</h3>
         <button @click="currency === '$' ? currency = 'RUR' : currency = '$' ">Переключатель валюты $/RUR</button>
       </div>
     </div>
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       currency: '$',
+      price: 0,
       productList: [
         {
           name: "Cake",
@@ -52,11 +53,8 @@ export default {
     };
   },
   methods: {
-    name() {},
-  },
-  computed: {
-    formattedPrice() {
-      return this.currency;
+      formattedPrice(product) {
+      return this.currency + product.price;
     },
   },
 };
